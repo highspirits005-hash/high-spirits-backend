@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "signature_dishes",
+  "info": {
+    "singularName": "signature-dish",
+    "pluralName": "signature-dishes",
+    "displayName": "signature-dish"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "shortDescription": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "displayOrder": {
+      "type": "integer"
+    },
+    "isHero": {
+      "type": "boolean"
+    },
+    "isActive": {
+      "type": "boolean"
+    }
+  }
+}

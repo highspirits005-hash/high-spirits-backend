@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "guest_reviews",
+  "info": {
+    "singularName": "guest-review",
+    "pluralName": "guest-reviews",
+    "displayName": "guest-review"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "reviewText": {
+      "type": "text"
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "guestName": {
+      "type": "string"
+    },
+    "guestTitle": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "displayOrder": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_services",
+  "info": {
+    "singularName": "event-service",
+    "pluralName": "event-services",
+    "displayName": "event-service"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "shortDescription": {
+      "type": "string"
+    },
+    "capacityNote": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "party",
+        "corporate",
+        "wedding",
+        "catering",
+        "music",
+        "venue"
+      ]
+    },
+    "displayOrder": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean"
+    }
+  }
+}

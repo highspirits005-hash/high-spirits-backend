@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "premium_ingredients",
+  "info": {
+    "singularName": "premium-ingredient",
+    "pluralName": "premium-ingredients",
+    "displayName": "premium-ingredient"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "shortDescription": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "displayOrder": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "badge": {
+      "type": "string"
+    }
+  }
+}

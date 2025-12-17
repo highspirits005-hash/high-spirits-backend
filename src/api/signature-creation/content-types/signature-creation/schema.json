@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "signature_creations",
+  "info": {
+    "singularName": "signature-creation",
+    "pluralName": "signature-creations",
+    "displayName": "signature-creation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "shortDescription": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "displayOrder": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean"
+    }
+  }
+}
