@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "buffet_items",
+  "info": {
+    "singularName": "buffet-item",
+    "pluralName": "buffet-items",
+    "displayName": "buffet-item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "isVeg": {
+      "type": "boolean"
+    },
+    "isSpicy": {
+      "type": "boolean"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::buffet-category.buffet-category",
+      "inversedBy": "buffet_items"
+    }
+  }
+}

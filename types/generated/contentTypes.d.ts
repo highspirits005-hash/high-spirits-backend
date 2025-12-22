@@ -430,6 +430,76 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBuffetCategoryBuffetCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'buffet_categories';
+  info: {
+    displayName: 'buffet-category';
+    pluralName: 'buffet-categories';
+    singularName: 'buffet-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    buffet_items: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::buffet-item.buffet-item'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::buffet-category.buffet-category'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBuffetItemBuffetItem extends Struct.CollectionTypeSchema {
+  collectionName: 'buffet_items';
+  info: {
+    displayName: 'buffet-item';
+    pluralName: 'buffet-items';
+    singularName: 'buffet-item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::buffet-category.buffet-category'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    isSpicy: Schema.Attribute.Boolean;
+    isVeg: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::buffet-item.buffet-item'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactFormContactForm extends Struct.CollectionTypeSchema {
   collectionName: 'contact_forms';
   info: {
@@ -456,6 +526,79 @@ export interface ApiContactFormContactForm extends Struct.CollectionTypeSchema {
     phone: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
     subject: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDrinkCategoryDrinkCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'drink_categories';
+  info: {
+    displayName: 'drink-category';
+    pluralName: 'drink-categories';
+    singularName: 'drink-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    drink_items: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::drink-item.drink-item'
+    >;
+    isActive: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::drink-category.drink-category'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDrinkItemDrinkItem extends Struct.CollectionTypeSchema {
+  collectionName: 'drink_items';
+  info: {
+    displayName: 'drink-item';
+    pluralName: 'drink-items';
+    singularName: 'drink-item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    drink_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::drink-category.drink-category'
+    >;
+    isActive: Schema.Attribute.Boolean;
+    isAlcoholic: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::drink-item.drink-item'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+    price: Schema.Attribute.Decimal;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1318,7 +1461,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::buffet-category.buffet-category': ApiBuffetCategoryBuffetCategory;
+      'api::buffet-item.buffet-item': ApiBuffetItemBuffetItem;
       'api::contact-form.contact-form': ApiContactFormContactForm;
+      'api::drink-category.drink-category': ApiDrinkCategoryDrinkCategory;
+      'api::drink-item.drink-item': ApiDrinkItemDrinkItem;
       'api::event-service.event-service': ApiEventServiceEventService;
       'api::gallery-item.gallery-item': ApiGalleryItemGalleryItem;
       'api::guest-review.guest-review': ApiGuestReviewGuestReview;
