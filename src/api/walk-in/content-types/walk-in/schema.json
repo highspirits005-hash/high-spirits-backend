@@ -17,11 +17,11 @@
     "email": {
       "type": "email"
     },
-    "phoneNumber": {
-      "type": "integer"
-    },
     "enquiry": {
       "type": "text"
+    },
+    "phoneNumber": {
+      "type": "string"
     }
   }
 }

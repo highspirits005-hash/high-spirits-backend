@@ -938,7 +938,7 @@ export interface ApiWalkInWalkIn extends Struct.CollectionTypeSchema {
       'api::walk-in.walk-in'
     > &
       Schema.Attribute.Private;
-    phoneNumber: Schema.Attribute.Integer;
+    phoneNumber: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
