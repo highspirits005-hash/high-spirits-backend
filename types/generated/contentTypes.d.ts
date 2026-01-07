@@ -915,37 +915,6 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiWalkInWalkIn extends Struct.CollectionTypeSchema {
-  collectionName: 'walk_ins';
-  info: {
-    displayName: 'walk-in';
-    pluralName: 'walk-ins';
-    singularName: 'walk-in';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    enquiry: Schema.Attribute.RichText;
-    fullName: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::walk-in.walk-in'
-    > &
-      Schema.Attribute.Private;
-    phone: Schema.Attribute.Integer;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1470,7 +1439,6 @@ declare module '@strapi/strapi' {
       'api::signature-creation.signature-creation': ApiSignatureCreationSignatureCreation;
       'api::signature-dish.signature-dish': ApiSignatureDishSignatureDish;
       'api::subscriber.subscriber': ApiSubscriberSubscriber;
-      'api::walk-in.walk-in': ApiWalkInWalkIn;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
