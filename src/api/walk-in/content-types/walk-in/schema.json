@@ -11,17 +11,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "fullName": {
       "type": "string"
-    },
-    "email": {
-      "type": "email"
     },
     "phone": {
       "type": "integer"
     },
+    "email": {
+      "type": "email"
+    },
     "enquiry": {
-      "type": "text"
+      "type": "richtext"
     }
   }
 }

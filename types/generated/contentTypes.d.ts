@@ -930,14 +930,14 @@ export interface ApiWalkInWalkIn extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     email: Schema.Attribute.Email;
-    enquiry: Schema.Attribute.Text;
+    enquiry: Schema.Attribute.RichText;
+    fullName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::walk-in.walk-in'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
     phone: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
