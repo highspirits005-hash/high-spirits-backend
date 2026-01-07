@@ -820,43 +820,6 @@ export interface ApiPremiumIngredientPremiumIngredient
   };
 }
 
-export interface ApiReservationReservation extends Struct.CollectionTypeSchema {
-  collectionName: 'reservations';
-  info: {
-    displayName: 'reservation';
-    pluralName: 'reservations';
-    singularName: 'reservation';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    dateTime: Schema.Attribute.DateTime;
-    email: Schema.Attribute.Email;
-    firstName: Schema.Attribute.String;
-    guests: Schema.Attribute.Integer;
-    lastName: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::reservation.reservation'
-    > &
-      Schema.Attribute.Private;
-    occasion: Schema.Attribute.Enumeration<
-      ['birthday,', 'anniversary,', 'business party']
-    >;
-    phone: Schema.Attribute.BigInteger;
-    publishedAt: Schema.Attribute.DateTime;
-    specialRequests: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiSignatureCreationSignatureCreation
   extends Struct.CollectionTypeSchema {
   collectionName: 'signature_creations';
@@ -945,6 +908,37 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
       'api::subscriber.subscriber'
     > &
       Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWalkInWalkIn extends Struct.CollectionTypeSchema {
+  collectionName: 'walk_ins';
+  info: {
+    displayName: 'walk-in';
+    pluralName: 'walk-ins';
+    singularName: 'walk-in';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    enquiry: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::walk-in.walk-in'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1473,10 +1467,10 @@ declare module '@strapi/strapi' {
       'api::menu-category.menu-category': ApiMenuCategoryMenuCategory;
       'api::menu-item.menu-item': ApiMenuItemMenuItem;
       'api::premium-ingredient.premium-ingredient': ApiPremiumIngredientPremiumIngredient;
-      'api::reservation.reservation': ApiReservationReservation;
       'api::signature-creation.signature-creation': ApiSignatureCreationSignatureCreation;
       'api::signature-dish.signature-dish': ApiSignatureDishSignatureDish;
       'api::subscriber.subscriber': ApiSubscriberSubscriber;
+      'api::walk-in.walk-in': ApiWalkInWalkIn;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
