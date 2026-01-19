@@ -27,11 +27,11 @@
     "Category": {
       "type": "enumeration",
       "enum": [
-        "ambience",
+        "grand opening",
         "food",
-        "drinks",
-        "exterior",
-        "events"
+        "interiors",
+        "chef",
+        "our happy customers"
       ]
     },
     "displayOrder": {

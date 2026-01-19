@@ -655,7 +655,7 @@ export interface ApiGalleryItemGalleryItem extends Struct.CollectionTypeSchema {
   attributes: {
     altText: Schema.Attribute.String;
     Category: Schema.Attribute.Enumeration<
-      ['ambience', 'food', 'drinks', 'exterior', 'events']
+      ['grand opening', 'food', 'interiors', 'chef', 'our happy customers']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
