@@ -824,6 +824,50 @@ export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
+  collectionName: 'orders';
+  info: {
+    description: 'Customer orders placed via the website';
+    displayName: 'Order';
+    pluralName: 'orders';
+    singularName: 'order';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    address: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customerName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    email: Schema.Attribute.Email;
+    items: Schema.Attribute.JSON & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> &
+      Schema.Attribute.Private;
+    notes: Schema.Attribute.Text;
+    orderId: Schema.Attribute.String & Schema.Attribute.Unique;
+    orderStatus: Schema.Attribute.Enumeration<
+      ['Pending', 'Confirmed', 'Preparing', 'Ready', 'Delivered', 'Cancelled']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Pending'>;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    source: Schema.Attribute.String & Schema.Attribute.DefaultTo<'website'>;
+    totalAmount: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whatsappMessage: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiPremiumIngredientPremiumIngredient
   extends Struct.CollectionTypeSchema {
   collectionName: 'premium_ingredients';
@@ -1505,6 +1549,7 @@ declare module '@strapi/strapi' {
       'api::guest-review.guest-review': ApiGuestReviewGuestReview;
       'api::menu-category.menu-category': ApiMenuCategoryMenuCategory;
       'api::menu-item.menu-item': ApiMenuItemMenuItem;
+      'api::order.order': ApiOrderOrder;
       'api::premium-ingredient.premium-ingredient': ApiPremiumIngredientPremiumIngredient;
       'api::signature-creation.signature-creation': ApiSignatureCreationSignatureCreation;
       'api::signature-dish.signature-dish': ApiSignatureDishSignatureDish;
