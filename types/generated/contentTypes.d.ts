@@ -494,7 +494,7 @@ export interface ApiBuffetCategoryBuffetCategory
     > &
       Schema.Attribute.Private;
     order: Schema.Attribute.Integer;
-    price: Schema.Attribute.Integer;
+    price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;

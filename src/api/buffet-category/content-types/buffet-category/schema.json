@@ -24,7 +24,7 @@
       "mappedBy": "category"
     },
     "price": {
-      "type": "integer"
+      "type": "decimal"
     }
   }
 }
